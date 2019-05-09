@@ -15,7 +15,7 @@ sed "3 s/^.*$/BASE_DIR=${PWD//\//\\/}/" -i configure_cpp.sh
 
 # Make sure we're not overwriting any other command
 if [ -f $COMMAND ] && [ "$(readlink -f $COMMAND)" != "$PWD/configure_cpp.sh" ]; then
-	echo "Some other program already has this name taken. You must modify the COMMAND_NAME"
+	echo "Some other program already has $COMMAND_NAME taken. You must modify the COMMAND_NAME"
 	echo "variable at the top of the script or get rid of the other program."
 	exit 1
 fi
