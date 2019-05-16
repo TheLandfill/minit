@@ -31,9 +31,11 @@ This command will
 
 ## Extensions
 
-Right now, the Makefile assumes that you're using `g++` and a bunch of flags that you might want to change. If this gets enough interest, I could probably rewrite `install.sh` to automatically set a compiler. Regardless, you can do it manually if you want.
+Right now, the Makefile assumes that you're using `g++` and a bunch of flags that you might want to change. If this gets enough interest, I could probably rewrite `install.sh` to automatically set a compiler. Regardless, you can do it manually by changing the compiler and linker variables in the Makefile.
 
 You can also create other directories and modify your project's Makefile to include/compile them. For instance, I generally create an `external_includes` directory.
+
+This will also work for c projects and anything else that compiles like c.
 
 ## License
 
