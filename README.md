@@ -1,4 +1,4 @@
-# cpp_init
+# minit
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Creates a bare project for cpp files with a Makefile included.
@@ -6,8 +6,8 @@ Creates a bare project for cpp files with a Makefile included.
 ## Installation
 
 ```
-git clone https://github.com/TheLandfill/cpp_init.git
-cd cpp_init
+git clone https://github.com/TheLandfill/minit.git
+cd minit
 ./install.sh
 ```
 
@@ -15,7 +15,7 @@ If you want, you can change the name of the command. Read the install.sh script 
 
 ## Usage
 ```
-cpp_init project_name executable_name
+minit project_name executable_name
 ```
 
 This command will
