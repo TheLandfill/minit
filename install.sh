@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Feel free to modify the name of the command.
-COMMAND_NAME=cpp_init
+COMMAND_NAME=minit
 
 # Any directory in your $PATH will do instead of /usr/local/bin/
 COMMAND=/usr/local/bin/$COMMAND_NAME
