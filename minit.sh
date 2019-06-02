@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-BASE_DIR=/home/joseph/dev/cpp_init
+set -e
+
+BASE_DIR=/home/joseph/dev/minit
 
 # The $# contains the number of arguments passed into the script
-if [ $# -eq 0 ]; then
+if [ $# -lt 2 ]; then
 	echo ""
 	echo "USAGE: $(basename $0) project_name output_file_name"
 	echo ""
