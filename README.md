@@ -16,6 +16,7 @@ If you want, you can change the name of the command. Read the install.sh script 
 ## Usage
 ```
 minit project_name executable_name
+minit-c project_name executable_name
 ```
 
 This command will
@@ -28,6 +29,17 @@ This command will
     -  Create `includes`, where you should put your .h files.
     -  Create `libs`, where you should put external libraries or links to external libraries
 -  Copy the Makefile you downloaded into the `bin` folder and change the product name
+
+The `make` command currently has three targets:
+-   release
+-   debug
+-   clean
+
+If no target is specified, release is assumed. Release and Debug have different flags which can be set manually in the Makefile. Debug will also compile a different program called 'executable_name-debug' so you don't run the wrong program by accident.
+
+minit will work for c++ programs while minit-c will work for c programs.
+
+This project will not initialize a git repository. If you generally want a git repository, create an alias or a script.
 
 ## Extensions
 
