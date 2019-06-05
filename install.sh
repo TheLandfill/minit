@@ -23,7 +23,7 @@ if [ -f $CPP_COMMAND ] && [ "$(readlink -f $CPP_COMMAND)" != "$PWD/minit.sh" ]; 
 	exit 1
 fi
 
-if [ -f $C_COMMAND ] && [ "$(readlink -f $C_COMMAND)" != "$PWD/minit.sh" ]; then
+if [ -f $C_COMMAND ] && [ "$(readlink -f $C_COMMAND)" != "$PWD/minit-c.sh" ]; then
 	echo "Some other program already has $C_COMMAND_NAME taken. You must modify the CPP_COMMAND_NAME"
 	echo "variable at the top of the script or get rid of the other program."
 	exit 1
