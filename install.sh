@@ -14,7 +14,7 @@ C_COMMAND=/usr/local/bin/$C_COMMAND_NAME
 # All the slashes after PWD replace every slash in the directory name with an
 # escaped slash using parameter expansion.
 # This command modifies minit.sh so that it knows where the Makefile is.
-sed "3 s/^.*$/BASE_DIR=${PWD//\//\\/}/" -i minit.sh
+sed "s/^BASE_DIR=$/BASE_DIR=${PWD//\//\\/}/g" -i minit.sh
 
 # Make sure we're not overwriting any other command
 if [ -f $CPP_COMMAND ] && [ "$(readlink -f $CPP_COMMAND)" != "$PWD/minit.sh" ]; then

@@ -2,7 +2,7 @@
 
 set -e
 
-BASE_DIR=/home/joseph/dev/minit
+BASE_DIR=
 
 # The $# contains the number of arguments passed into the script
 if [ $# -lt 2 ]; then
