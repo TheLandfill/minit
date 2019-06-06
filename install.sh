@@ -33,9 +33,10 @@ fi
 sudo rm -f $CPP_COMMAND
 sudo rm -f $C_COMMAND
 
+if [ $# -gt 0 ] && [ "$1" = "tutorial" ]; then
+	echo "Neither command has been created."
+	exit 0
+fi
 # Create a symbolic link in your PATH variable
 sudo ln -s $PWD/minit.sh $CPP_COMMAND
 sudo ln -s $PWD/minit-c.sh $C_COMMAND
-
-sudo chmod 755 $PWD/minit.sh
-sudo chmod 755 $PWD/minit-c.sh
