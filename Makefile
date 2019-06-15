@@ -9,7 +9,9 @@ OBJDIR  := ../obj
 RELEASE_OBJDIR := $(OBJDIR)/release/
 DEBUG_OBJDIR := $(OBJDIR)/debug/
 
-MKDIR_P = mkdir -p
+MKDIR_P := mkdir -p
+RM_RF := rm -rf
+ALL := /*
 
 # Language --------------------------------------------------------------------
 EXTENSION := cpp
@@ -98,7 +100,7 @@ $(DEBUG_OBJDIR):
 .PHONY: clean
 
 clean:
-	rm -rf $(OBJDIR)/* $(PRODUCT) $(DEBUG_PRODUCT)
+	$(RM_RF) $(OBJDIR)$(ALL) $(PRODUCT) $(DEBUG_PRODUCT)
 
 .PHONY: release
 
