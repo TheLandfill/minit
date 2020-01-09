@@ -3,7 +3,7 @@
 set -e
 
 minit $*
-MF=$1/bin/Makefile
+MF=$1/Makefile
 
 sed -i 's/g++/gcc/g' $MF
 sed -i 's/cpp/c/g' $MF

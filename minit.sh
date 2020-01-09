@@ -24,8 +24,6 @@ mkdir -p "includes"
 mkdir -p "src"
 mkdir -p "libs"
 
-cd bin
-
 # Copy the Makefile to the bin directory
 cp $BASE_DIR/Makefile .
 

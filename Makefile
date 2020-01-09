@@ -1,11 +1,12 @@
 PRODUCT :=
 DEBUG_PRODUCT := $(PRODUCT)-debug
-BINDIR  := .
-INCDIR  := ../includes
-INCDIR_EXT := ../external_includes
-LIBDIR	:= ../libs
-SRCDIR  := ../src
-OBJDIR  := ../obj
+MAINDIR := ${CURDIR}
+BINDIR  := $(MAINDIR)/bin
+INCDIR  := $(MAINDIR)/includes
+INCDIR_EXT := $(MAINDIR)/external_includes
+LIBDIR	:= $(MAINDIR)/libs
+SRCDIR  := $(MAINDIR)/src
+OBJDIR  := $(MAINDIR)/obj
 RELEASE_OBJDIR := $(OBJDIR)/release/
 DEBUG_OBJDIR := $(OBJDIR)/debug/
 
@@ -21,7 +22,7 @@ LINKER := g++
 
 # Flags -----------------------------------------------------------------------
 # ----- General ---------------------------------------------------------------
-INCLUDES := -I$(INCDIR) -I$(INCDIR_EXT)
+INCLUDES := -I $(INCDIR) -I $(INCDIR_EXT)
 LIBRARIES := -L$(LIBDIR)
 WARNING_FLAGS := -Wall -Wextra
 DEPENDENCY_GENERATION_FLAGS := -MMD -MP
@@ -35,7 +36,7 @@ RELEASE_MACROS :=
 
 # ----- Debug -----------------------------------------------------------------
 DEBUG_FLAGS := -O0 -g
-DEBUG_MACROS := 
+DEBUG_MACROS :=
 
 
 
@@ -111,5 +112,5 @@ release: directories $(RELEASE_OBJ) $(BINDIR)/$(PRODUCT)
 .PHONY: debug
 
 debug: COMPILER_FLAGS := $(DEBUG_FLAGS) $(GENERAL_COMPILER_FLAGS)
-debug: LINKER_FLAGS := 
+debug: LINKER_FLAGS :=
 debug: directories $(DEBUG_OBJ) $(BINDIR)/$(DEBUG_PRODUCT)
