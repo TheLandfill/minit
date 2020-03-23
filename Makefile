@@ -23,7 +23,8 @@ LINKER := g++
 # Flags -----------------------------------------------------------------------
 # ----- General ---------------------------------------------------------------
 INCLUDES := -I $(INCDIR) -I $(INCDIR_EXT)
-LIBRARIES := -L$(LIBDIR)
+SYS_LIBRARIES :=
+LIBRARIES := -L$(LIBDIR) $(SYS_LIBRARIES)
 WARNING_FLAGS := -Wall -Wextra
 DEPENDENCY_GENERATION_FLAGS := -MMD -MP
 
@@ -68,13 +69,13 @@ $(BINDIR)/$(PRODUCT): directories $(RELEASE_OBJ) $(LIB)
 # 	Make a library
 #	ar rcs $(BINDIR)/$(PRODUCT) $(RELEASE_OBJ) $(LIB)
 #	Make a program
-	$(LINKER) $(LINKER_FLAGS) $(COMPILER_FLAGS) $(RELEASE_OBJ) $(LIB) -o $@
+	$(LINKER) $(LINKER_FLAGS) $(COMPILER_FLAGS) $(RELEASE_OBJ) $(LIB) $(LIBRARIES) -o $@
 
 $(BINDIR)/$(DEBUG_PRODUCT): directories $(DEBUG_OBJ) $(LIB)
 #	Make a library
 #	ar rcs $(BINDIR)/$(DEBUG_PRODUCT) $(DEBUG_OBJ) $(LIB)
 #	Make a program
-	$(LINKER) $(LINKER_FLAGS) $(COMPILER_FLAGS) $(DEBUG_OBJ) $(LIB) -o $@
+	$(LINKER) $(LINKER_FLAGS) $(COMPILER_FLAGS) $(DEBUG_OBJ) $(LIB) $(LIBRARIES) -o $@
 
 # Compile individual .$(EXTENSION) source files into object files
 $(RELEASE_OBJDIR)/%.o: $(SRCDIR)/%.$(EXTENSION)
