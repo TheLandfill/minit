@@ -9,6 +9,7 @@ SRCDIR  := $(MAINDIR)/src
 OBJDIR  := $(MAINDIR)/obj
 RELEASE_OBJDIR := $(OBJDIR)/release/
 DEBUG_OBJDIR := $(OBJDIR)/debug/
+DEPDIR := $(OBJDIR)/dep/
 
 MKDIR_P := mkdir -p
 RM_RF := rm -rf
@@ -59,7 +60,7 @@ SRC := $(wildcard $(SRCDIR)/*.$(EXTENSION))
 RELEASE_OBJ := $(patsubst $(SRCDIR)/%.$(EXTENSION),$(RELEASE_OBJDIR)/%.o,$(SRC))
 DEBUG_OBJ := $(patsubst $(SRCDIR)/%.$(EXTENSION),$(DEBUG_OBJDIR)/%.o,$(SRC))
 # Creates .d files (dependencies) for every .$(EXTENSION) file in SRC
-DEP := $(patsubst $(SRCDIR)/%.$(EXTENSION),$(OBJDIR)/%.d,$(SRC))
+DEP := $(patsubst $(SRCDIR)/%.$(EXTENSION),$(DEPDIR)/%.d,$(SRC))
 # Finds all lib*.a files and puts them into LIB
 LIB := $(wildcard $(LIBDIR)/lib*.a)
 
@@ -79,16 +80,16 @@ $(BINDIR)/$(DEBUG_PRODUCT): directories $(DEBUG_OBJ) $(LIB)
 
 # Compile individual .$(EXTENSION) source files into object files
 $(RELEASE_OBJDIR)/%.o: $(SRCDIR)/%.$(EXTENSION)
-	$(COMPILER) $(COMPILER_FLAGS) $(INCLUDES) -c $< -o $@
+	$(COMPILER) $(COMPILER_FLAGS) -MF $(DEPDIR)/$*.d $(INCLUDES) -c $< -o $@
 
 $(DEBUG_OBJDIR)/%.o: $(SRCDIR)/%.$(EXTENSION)
-	$(COMPILER) $(COMPILER_FLAGS) $(INCLUDES) -c $< -o $@
+	$(COMPILER) $(COMPILER_FLAGS) -MF $(DEPDIR)/%.d $(INCLUDES) -c $< -o $@
 
 -include $(DEP)
 
 .PHONY: directories
 
-directories: $(OBJDIR) $(RELEASE_OBJDIR) $(DEBUG_OBJDIR)
+directories: $(OBJDIR) $(RELEASE_OBJDIR) $(DEBUG_OBJDIR) $(DEPDIR)
 
 $(OBJDIR):
 	$(MKDIR_P) $(OBJDIR)
@@ -98,6 +99,9 @@ $(RELEASE_OBJDIR):
 
 $(DEBUG_OBJDIR):
 	$(MKDIR_P) $(DEBUG_OBJDIR)
+
+$(DEPDIR):
+	$(MKDIR_P) $(DEPDIR)
 
 .PHONY: clean
 
